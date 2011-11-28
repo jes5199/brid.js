@@ -1,0 +1,41 @@
+brid.js (pronounced like "bridges")
+is a LISP that uses JSON instead of S-Expressions
+implemented in JavaScript
+
+based upon Peter Norvig's lis.py
+(Sorry I dropped your ai-class, Peter.)
+
+This was partially inspired by Stuart Halloway's talks
+"Simplicity Ain't Easy" and "Radical Simplicity"
+
+But the real story is:
+Sometimes I need to use JSON outside of REST
+And I've started using a style of
+JSON document that looks a lot like S-Expressions.
+For example, in json_shape ( https://github.com/jes5199/json_shape ),
+I describe JSON datatypes using predicates that look like this:
+["array", {"contents": ["number", {"max":255, "min":0} ] } ]
+And in the Clojure port, ( https://github.com/jes5199/cljson_shape )
+I actually translate that directly into a Clojure S-Expression, like so:
+(array {:contents (number, {:max 255 :min 0} ) } )
+Which is almost one-to-one, if you blur the distinction
+between symbols, keywords, and strings.
+So why not actually implement such a LISP?
+
+brid.js currently implements a tiny subset of Scheme and Clojure
+It does not yet support macros.
+It does not support tail recursion.
+Its standard library is woefully incomplete.
+
+I've got a REPL in bridjs.html, also available at http://jes5199.com/bridjs.html
+
+Example expressions:
+["map", ["lambda", ["x"], ["+", "x", 1] ], ["quote", [1, 2, 3]] ]
+["reduce", "+", ["quote", [1,2,3,4,5]]]
+
+Released under the MIT license.
+Patches welcome.
+
+dedicated to my best friend Jenn
+on some sort of anniversary, marking 1 year
+29th of November, 2011
