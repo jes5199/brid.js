@@ -150,6 +150,10 @@ function write(s){
   output.scrollTop = output.scrollHeight;
 }
 
+function writeln(s){
+  write(s + "\n");
+}
+
 function get(hash, key){
   if( hash instanceof Object ){
     if( hash.hasOwnProperty( key ) ){
@@ -330,6 +334,7 @@ global = {
     'reduce': reduce,
 
     'print': write,
+    'println': writeln,
   }
 }
 
@@ -367,6 +372,16 @@ function do_repl(){
   }
   write( JSON.stringify(r, fixJson) + "\n" );
   clearInput();
+}
+
+function hello(){
+  return document.getElementById('input').value = JSON.stringify(["println", ["quote", "hello world"]]);
+}
+
+function mapexample(){
+  return document.getElementById('input').value = JSON.stringify(
+    ["map", ["lambda", ["x"], ["+", "x", 1] ], ["quote", [1, 2, 3]] ]
+  );
 }
 
 prelude = [ "begin",
