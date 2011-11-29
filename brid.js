@@ -317,7 +317,7 @@ global = {
 
     '+': plus,
     '-': minus,
-    // TODO: muliplication and division and modulus
+    // TODO: division and modulus
     // TODO: min, max
 
     '=':  eq,
@@ -392,6 +392,17 @@ function mapexample(){
 }
 
 prelude = [ "begin",
+  // curried multiplication            
+  ["define", "*", ["lambda", ["n"], 
+                   ["lambda", ["m"], 
+                    ["if", ["eq?", "m", 0], 
+                     0, 
+                     ["+", "n", [["*", "n"], ["-", "m", 1]]]]]]]
+  // factorial          
+  ["define", "fact", ["lambda", ["n"],
+                      ["if", ["eq?", "n", 0],
+                       1, 
+                       [["*", "n"], ["fact", ["-", "n", 1]]]]]]
   ["define", "inc", ["lambda", ["x"], ["+", "x", 1] ] ],
   ["define", "dec", ["lambda", ["x"], ["-", "x", 1] ] ],
   ["define", "not", ["lambda", ["x"], ["if", "x", false, true]]],
