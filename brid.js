@@ -300,6 +300,10 @@ function reduce(f, a, init){
   }
 }
 
+function toJson( obj ){
+  return JSON.stringify(obj, fixJson);
+}
+
 global = {
   values:{
     'eq?': eqp,
@@ -335,6 +339,9 @@ global = {
 
     'print': write,
     'println': writeln,
+
+    'serialize': toJson,
+    'unserialize': JSON.parse,
   }
 }
 
