@@ -27,7 +27,7 @@ It does not yet support macros.
 It does not support tail recursion.
 Its standard library is woefully incomplete.
 
-I've got a REPL in bridjs.html, also available at http://jes5199.com/bridjs.html
+I've got a REPL in bridjs.html, also available at http://jes5199.github.com/brid.js/bridjs.html
 
 Example expressions:
 ["map", ["lambda", ["x"], ["+", "x", 1] ], ["quote", [1, 2, 3]] ]
